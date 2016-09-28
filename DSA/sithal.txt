@@ -1,0 +1,1147 @@
+
+Suppose we wish to multiply four matrices of real numbers M1 × M2 × M3 × M4
+where M1 is 10 by 20, M2 is 20 by 50, M3 is 50 by 1, and M4 is 1 by 100.
+Assume that the multiplication of a p × q matrix by a q × r matrix requires pqr
+scalar operations, as it does in the usual matrix multiplication algorithm. Find
+the optimal order in which to multiply the matrices so as to minimize the total
+number of scalar operations. How would you find this optimal ordering if there
+are an arbitrary number of matrices?
+**1.4
+Suppose we wish to partition the square roots of the integers from 1 to 100 into
+two piles of fifty numbers each, such that the sum of the numbers in the first
+pile is as close as possible to the sum of the numbers in the second pile. If we
+could use two minutes of computer time to help answer this question, what
+computations would you perform in those two minutes?
+1.5
+Describe a greedy algorithm for playing chess. Would you expect it to perform
+very well?
+1.6
+In Section 1.2 we considered an ADT SET, with operations MAKE-NULL,
+UNION, and SIZE. Suppose for convenience that we assume all sets are subsets
+of {0, 1, . . . , 31} and let the ADT SET be interpreted as the Pascal data type
+set of 0..31. Write Pascal procedures for these operations using this
+implementation of SET.
+1.7
+The greatest common divisor of two integers p and q is the largest integer d that
+divides both p and q evenly. We wish to develop a program for computing the
+greatest common divisor of two integers p and q using the following algorithm.
+Let r be the remainder of p divided by q. If r is O, then q is the greatest
+common divisor. Otherwise, set p equal to q, then q equal to r, and repeat the
+process.
+a. Show that this process does find the correct greatest
+common divisor.
+b. Refine this algorithm into a pseudo-language program.
+c. Convert your pseudo-language program into a Pascal
+program.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1201.htm (30 of 37) [1.7.2001 18:58:22]
+Data Structures and Algorithms: CHAPTER 1: Design and Analysis of Algorithms
+1.8
+We want to develop a program for a text formatter that will place words on
+lines that are both left and right justified. The program will have a word buffer
+and a line buffer. Initially both are empty. A word is read into the word buffer.
+If there is sufficient room in the line buffer, the word is transferred to the line
+buffer. Otherwise, additional spaces are inserted between words in the line
+buffer to fill out the line, and then the line buffer is emptied by printing the line.
+a. Refine this algorithm into a pseudo-language program.
+b. Convert your pseudo-language program to a Pascal
+program.
+1.9
+Consider a set of n cities and a table of distances between pairs of cities. Write a
+pseudo-language program for finding a short path that goes through each city
+exactly once and returns to the city from which it started. There is no known
+method for obtaining the shortest such tour except by exhaustive searching.
+Thus try to find an efficient algorithm for this problem using some reasonable
+heuristic.
+1.10
+Consider the following functions of n:
+Indicate for each distinct pair i and j whether fi(n) is O(fj(n)) and whether fi(n) is
+W(fj(n)).
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1201.htm (31 of 37) [1.7.2001 18:58:22]
+Data Structures and Algorithms: CHAPTER 1: Design and Analysis of Algorithms
+1.11
+Consider the following functions of n:
+Indicate for each distinct pair i and j whether gi(n) is O(gj(n)) and whether gi(n)
+is W(gj(n)).
+1.12
+Give, using "big oh" notation, the worst case running times of the following
+procedures as a function of n.
+a. procedure matmpy ( n: integer);
+var
+i, j, k: integer;
+begin
+for i := 1 to n do
+for j := 1 to n do begin
+C[i, j] := O;
+for k := 1 to n do
+C[i, j] := C[i, j,] + A[i, k] * B[k, j]
+end
+end
+b. procedure mystery ( n: integer);
+var
+i, j, k: integer;
+begin
+for i:= 1 to n-1 do
+for j:= i + 1 to n do
+for k := 1 to j do
+{ some statement requiring O(1) time }
+end
+c. procedure veryodd ( n: integer );
+var
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1201.htm (32 of 37) [1.7.2001 18:58:22]
+Data Structures and Algorithms: CHAPTER 1: Design and Analysis of Algorithms
+i, j, x, y: integer;
+begin
+for i := 1 to n do
+if odd(i) then begin
+for j := i to n do
+x := x + 1;
+for j := 1 to i do
+y := y + l
+end
+end
+d. function recursive (n: integer ) : integer;
+begin
+if n <= 1 then
+return (l)
+else
+return (recursive(n-1) + recursive(n-1))
+end
+1.13
+Show that the following statements are true.
+a. 17 is O(1).
+b. n(n-1)/2 is O(n2).
+c. max(n3, 10n2) is O(n3).
+e) If p(x) is any kth degree polynomial with a positive leading
+coefficient, then p(n) is O(nk) and W(nk).
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1201.htm (33 of 37) [1.7.2001 18:58:23]
+Data Structures and Algorithms: CHAPTER 1: Design and Analysis of Algorithms
+*1.14
+Suppose T1(n) is W(f(n)) and T2(n) is W(g(n)). Which of the following
+statements are true?
+a. T1(n) + T2(n) is W(max(f(n), g(n))).
+b. T1(n)T2(n) is W(f(n)g(n)).
+*1.15
+Some authors define big omega by saying f(n) is W(g(n)) if there is some n0 and
+c > 0 such that for all n ³ n0 we have f(n) ³ cg(n).
+a. Is it true for this definition that f(n) is W(g(n)) if and only
+if g(n) is O(f(n))?
+b. Is (a) true for the definition of big omega in Section 1.4?
+c. Does Exercise 1.14(a) or (b) hold for this definition of big
+omega?
+1.16
+Order the following functions by growth rate: (a) n, (b) Ö¯n, (c) logn, (d)
+loglogn, (e) log2n, (f) n/logn, (g) Ö¯nlog2n, (h) (1/3)n, (i) (3/2)n, (j) 17.
+1.17
+Assume the parameter n in the procedure below is a positive power of 2, i.e., n
+= 2, 4, 8, 16 , . . .. Give the formula that expresses the value of the variable
+count in terms of the value of n when the procedure terminates.
+procedure mystery ( n: integer );
+var
+x, count: integer;
+begin
+count := 0;
+x := 2;
+while x < n do begin
+x := 2 * x;
+count := count + 1
+end;
+writeln(count)
+end
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1201.htm (34 of 37) [1.7.2001 18:58:23]
+Data Structures and Algorithms: CHAPTER 1: Design and Analysis of Algorithms
+1.18
+Here is a function max(i, n) that returns the largest element in positions i
+through i+n-1 of an integer array A. You may assume for convenience that n is
+a power of 2.
+function max ( i, n: integer ): integer;
+var
+m1, m2: integer;
+begin
+if n = 1 then
+return (A[i])
+else begin
+m1 := max(i, n div 2);
+m2 := max(i+n div 2,
+n div 2);
+if m1 < m2 then
+return (m2)
+else
+return (m1)
+end
+end
+a. Let T(n) be the worst-case time taken by max with second argument n.
+That is, n is the number of elements of which the largest is found. Write
+an equation expressing T(n) in terms of T(j) for one or more values of j
+less than n and a constant or constants that represent the times taken by
+individual statements of the max program.
+b. Give a tight big oh upper bound on T(n). Your answer should be equal to
+the big omega lower bound, and be as simple as possible.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1201.htm (35 of 37) [1.7.2001 18:58:23]
+Data Structures and Algorithms: CHAPTER 1: Design and Analysis of Algorithms
+Bibliographic Notes
+The concept of an abstract data type can be traced to the class type in the language
+SIMULA 67 (Birtwistle et al. [1973]). Since that time, a variety of other languages that
+support abstract data types have been developed including Alphard (Shaw, Wulf, and
+London [1977]), C with classes (Stroustrup [1982]), CLU (Liskov, et al. [1977]), MESA
+(Geschke, Morris, and Satterthwaite [1977]), and Russell (Demers and Donahue [1979]).
+The ADT concept is further discussed in works such as Gotlieb and Gotlieb [1978] and
+Wulf et al. [1981].
+Knuth [1968] was the first major work to advocate the systematic study of the running
+time of programs. Aho, Hopcroft, and Ullman [1974] relate the time and space complexity
+of algorithms to various models of computation, such as Turing machines and randomaccess
+machines. See also the bibliographic notes to Chapter 9 for more references to the
+subject of analysis of algorithms and programs.
+For additional material on structured programming see Hoare, Dahl, and Dijkstra
+[1972], Wirth [1973], Kernighan and Plauger [1974], and Yourdon and Constantine [1975].
+Organizational and psychological problems arising in the development of large software
+projects are discussed in Brooks [1974] and Weinberg [1971]. Kernighan and Plauger
+[1981] show how to build useful software tools for a programming environment.
+† The symbol Ø stands for the empty set.
+‡ We distinguish the abstract data type SET from the built-in set type of Pascal.
+† The record has no known name because it was created by a call new(header), which made
+header point to this newly-created record. Internal to the machine, however, there is a
+memory address that can be used to locate the cell.
+† Note the asymmetry between big-oh and big-omega notation. The reason such asymmetry
+is often useful is that there are many times when an algorithm is fast on many but not all
+inputs. For example, there are algorithms to test whether their input is of prime length that
+run very fast whenever that length is even, so we could not get a good lower bound on
+running time that held for all n ³ n0.
+† Unless otherwise specified all logarithms are to the base 2. Note that O(logn) does not
+depend on the base of the logarithm since logan = clogbn, where c = logab.
+† UNIX is a Trademark of Bell Laboratories.
+‡ We could use an unabridged dictionary, but many misspellings are real words one has
+never heard of.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1201.htm (36 of 37) [1.7.2001 18:58:23]
+Data Structures and Algorithms: CHAPTER 1: Design and Analysis of Algorithms
+Table of Contents Go to Chapter 2
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1201.htm (37 of 37) [1.7.2001 18:58:23]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+Basic Abstract DataTypes
+In this chapter we shall study some of the most fundamental abstract data types. We
+consider lists, which are sequences of elements, and two special cases of lists: stacks,
+where elements are inserted and deleted at one end only, and queues, where elements
+are inserted at one end and deleted at the other. We then briefly study the mapping or
+associative store, an ADT that behaves as a function. For each of these ADT's we
+consider several implementations and compare their relative merits.
+2.1 The Abstract Data Type "List"
+Lists are a particularly flexible structure because they can grow and shrink on
+demand, and elements can be accessed, inserted, or deleted at any position within a
+list. Lists can also be concatenated together or split into sublists. Lists arise routinely
+in applications such as information retrieval, programming language translation, and
+simulation. Storage management techniques of the kind we discuss in Chapter 12 use
+list-processing techniques extensively. In this section we shall introduce a number of
+basic list operations, and in the remainder of this chapter present data structures for
+lists that support various subsets of these operations efficiently.
+Mathematically, a list is a sequence of zero or more elements of a given type
+(which we generally call the elementtype). We often represent such a list by a
+comma-separated sequence of elements
+al, a2, . . . ,an
+where n ³ 0, and each ai is of type elementtype. The number n of elements is said to
+be the length of the list. Assuming n ³ 1, we say that a1 is the first element and an is
+the last element. If n = 0, we have an empty list, one which has no elements.
+An important property of a list is that its elements can be linearly ordered
+according to their position on the list. We say ai precedes ai+1 for i = 1, 2, . . . , n-1,
+and ai follows ai-1 for i = 2, 3, . . . ,n. We say that the element ai is at position i. It is
+also convenient to postulate the existence of a position following the last element on
+a list. The function END(L) will return the position following position n in an nelement
+list L. Note that position END(L) has a distance from the beginning of the
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (1 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+list that varies as the list grows or shrinks, while all other positions have a fixed
+distance from the beginning of the list.
+To form an abstract data type from the mathematical notion of a list we must
+define a set of operations on objects of type LIST.† As with many other ADT's we
+discuss in this book, no one set of operations is suitable for all applications. Here, we
+shall give one representative set of operations. In the next section we shall offer
+several data structures to represent lists and we shall write procedures for the typical
+list operations in terms of these data structures.
+To illustrate some common operations on lists, let us consider a typical
+application in which we have a mailing list from which we wish to purge duplicate
+entries. Conceptually, this problem can be solved quite simply: for each item on the
+list, remove all equivalent following items. To present this algorithm, however, we
+need to define operations that find the first element on a list, step through all
+successive elements, and retrieve and delete elements.
+We shall now present a representative set of list operations. In what follows, L is
+a list of objects of type elementtype, x is an object of that type, and p is of type
+position. Note that "position" is another data type whose implementation will vary
+for different list implementations. Even though we informally think of positions as
+integers, in practice, they may have another representation.
+1. INSERT(x, p, L). Insert x at position p in list L, moving elements at p and
+following positions to the next higher position. That is, if L is al, a2, . . . ,an,
+then L becomes a1, a2,. . . ,ap- 1, x, ap, . . . ,an. If p is END(L), then L becomes
+a1, a2, . . . , an, x. If list L has no position p, the result is undefined.
+2. LOCATE(x, L). This function returns the position of x on list L. If x appears
+more than once, then the position of the first occurrence is returned. If x does
+not appear at all, then END(L) is returned.
+3. RETRIEVE(p, L). This function returns the element at position p on list L.
+The result is undefined if p = END(L) or if L has no position p. Note that the
+elements must be of a type that can be returned by a function if RETRIEVE is
+used. In practice, however, we can always modify RETRIEVE to return a
+pointer to an object of type elementtype.
+4. DELETE(p, L). Delete the element at position p of list L. If L is a1, a2, . . .
+,an, then L becomes a1, a2, . . . ,ap- 1, ap+1, . . . ,an. The result is undefined if L
+has no position p or if p = END(L).
+5. NEXT(p, L) and PREVIOUS(p, L) return the positions following and
+preceding position p on list L. If p is the last position on L, then NEXT(p, L) =
+END(L). NEXT is undefined if p is END(L). PREVIOUS is undefined if p is
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (2 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+1. Both functions are undefined if L has no position p.
+6. MAKENULL(L). This function causes L to become an empty list and returns
+position END(L).
+7. FIRST(L). This function returns the first position on list L. If L is empty, the
+position returned is END(L).
+8. PRINTLIST(L). Print the elements of L in the order of occurrence.
+Example 2.1. Let us write, using these operators, a procedure PURGE that takes a
+list as argument and eliminates duplicates from the list. The elements of the list are
+of type elementtype, and a list of such elements has type LIST, a convention we shall
+follow throughout this chapter. There is a function same(x,y), where x and y are of
+elementtype, that is true if x and y are "the same" and false if not. The notion of
+sameness is purposely left vague. If elementtype is real, for example, we might want
+same(x,y) true if and only if x = y. However, if elementtype is a record containing the
+account number, name, and address of a subscriber as in
+type
+elementtype = record
+acctno: integer;
+name: packed array [1..20] of char;
+address: packed array [1..50] of char
+end
+then we might want same(x, y) to be true whenever x.acctno=y.acctno.†
+Figure 2.1 shows the code for PURGE. The variables p and q are used to
+represent two positions in the list. As the program proceeds, duplicate copies of any
+elements to the left of position p have been deleted from the list. In one iteration of
+the loop (2)-(8), q is used to scan the list following position p to delete any duplicates
+of the element at position p. Then p is moved to the next position and the process is
+repeated.
+In the next section we shall provide appropriate declarations for LIST and
+position, and implementations for the operations so that PURGE becomes a working
+program. As written, the program is independent of the manner in which lists are
+represented so we are free to experiment with various list implementations.
+procedure PURGE ( var L: LIST );
+{ PURGE removes duplicate elements from list L }
+var
+p, q: position; { p will be the "current" position
+in L, and q will move ahead to find equal elements }
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (3 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+begin
+(1) p := FIRST(L);
+(2) while p <> END(L) do begin
+(3) q := NEXT(p, L);
+(4) while q <> END(L) do
+(5) if same(RETRIEVE(p, L), RETRIEVE(q,
+L)) then
+(6) DELETE(q, L)
+else
+(7) q := NEXT(q, L);
+(8) p := NEXT(p, L)
+end
+end; { PURGE }
+Fig. 2.1. Program to remove duplicates.
+A point worth observing concerns the body of the inner loop, lines (4)-(7) of Fig.
+2.1. When we delete the element at position q at line (6), the elements that were at
+positions q+1, q+2, . . . , and so on, move up one position in the list. In particular,
+should q happen to be the last position on L, the value of q would become END(L). If
+we then executed line (7), NEXT(END(L), L) would produce an undefined result.
+Thus, it is essential that either (6) or (7), but never both, is executed between the tests
+for q = END(L) at line (4).
+2.2 Implementation of Lists
+In this section we shall describe some data structures that can be used to represent
+lists. We shall consider array, pointer, and cursor implementations of lists. Each of
+these implementations permits certain list operations to be done more efficiently than
+others.
+Array Implementation of Lists
+In an array implementation of a list, the elements are stored in contiguous cells of an
+array. With this representation a list is easily traversed and new elements can be
+appended readily to the tail of the list. Inserting an element into the middle of the list,
+however, requires shifting all following elements one place over in the array to make
+room for the new element. Similarly, deleting any element except the last also
+requires shifting elements to close up the gap.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (4 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+Fig. 2.2. Array implementation of a list.
+In the array implementation we define the type LIST to be a record having two
+fields. The first field is an array of elements whose length is sufficient to hold the
+maximum size list that will be encountered. The second field is an integer last
+indicating the position of the last list element in the array. The i th element of the list
+is in the ith cell of the array, for 1 £ i £ last, as shown in Fig. 2.2. Positions in the list
+are represented by integers, the ith position by the integer i. The function END(L)
+has only to return last + 1. The important declarations are:
+const
+maxlength = 100 { some suitable constant };
+type
+LIST = record
+elements: array[1..maxlength] of elementtype;
+last: integer
+end;
+position = integer;
+function END ( var L: LIST ): position;†
+begin
+return (L.last + 1)
+end; { END }
+Figure 2.3 shows how we might implement the operations INSERT, DELETE,
+and LOCATE using this array-based implementation. INSERT moves the elements
+at locations p,p+1, . . . , last into locations p+1, p+2, . . . ,last+1 and then inserts the
+new element at location p. If there is no room in the array for an additional element,
+the routine error is invoked, causing its argument to be printed, followed by
+termination of execution of the program. DELETE removes the element at position p
+by moving the elements at positions p + 1, p + 2, . . . , last into positions p, p+ 1, . . .
+, last-1. LOCATE sequentially scans the array to look for a given element. If the
+element is not found, LOCATE returns last+ 1.
+It should be clear how to encode the other list operations using this
+implementation of lists. For example, FIRST always returns 1; NEXT returns one
+more than its argument and PREVIOUS returns one less, each first checking that the
+result is in range; MAKENULL(L) sets L.last to 0.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (5 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+If procedure PURGE of Fig. 2.1 is preceded by
+1. the definitions of elementtype and the function same,
+2. the definitions of LIST, position and END(L) as above,
+3. the definition of DELETE from Fig. 2.3, and
+4. suitable definitions for the trivial procedures FIRST, NEXT, and RETRIEVE,
+then a working procedure PURGE results.
+At first, it may seem tedious writing procedures to govern all accesses to the
+underlying structures. However, if we discipline ourselves to writing programs in
+terms of the operations for manipulating abstract data types rather than making use
+of particular implementation details, then we can modify programs more readily by
+reimplementing the operations rather than searching all programs for places where
+we have made accesses to the underlying data structures. This flexibility can be
+particularly important in large software eftion END ( L: LIST ): position;
+{ END returns a pointer to the last cell of L }
+var
+q: position;
+begin
+(1) q := L;
+(2) while q­.next <> nil
+do
+(3) q := q­.next;
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (8 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+(4) return (q)
+end; { END }
+Fig. 2.5. The function END.
+Figure 2.6 contains routines for the four operations INSERT, DELETE,
+LOCATE, and MAKENULL using this pointer implementation of lists. The other
+operations can be implemented as one-step routines, with the exception of
+PREVIOUS, which requires a scan of the list from the beginning. We leave these
+other routines as exercises. Note that many of the commands do not use parameter L,
+the list, and we omit it from those that do not.
+The mechanics of the pointer manipulations of the INSERT procedure in Fig. 2.6
+are shown in Fig. 2.7. Figure 2.7(a) shows the situation before executing INSERT.
+We wish to insert a new element in front of the cell containing b, so p is a pointer to
+the list cell that contains the pointer to b. At line (1), temp is set to point to the cell
+containing b. At line (2) a new list cell is created and the next field of the cell
+containing a is made to point to this cell. At line (3) the element field of the newlycreated
+cell is made to hold x, and at line (4) the next field is given the value of temp,
+thus making it point to the cell containing b. Figure 2.7(b) shows the result of
+executing INSERT. The new pointers are shown dashed, and marked with the step at
+which they were created.
+The DELETE procedure is simpler. Figure 2.8 shows the pointer manipulations of
+the DELETE procedure in Fig. 2.6. Old pointers are solid and the new pointers
+dashed.
+We should note that a position in a linked-list implementation of a list behaves
+differently from a position in an array implementation. Suppose we have a list with
+three elements a, b, c and a variable p, of type position, which currently has position
+3 as its value; i.e., it points to the cell holding b, and thus represents the position of c.
+If we execute a command to insert x at position 2, the list becomes a, x, b, c, and
+element b now occupies position 3. If we use the array implementation of lists
+described earlier, b and c would be moved down the array, so b would indeed occupy
+the third position.
+procedure INSERT ( x: elementtype; p: position);
+var
+temp : position;
+begin
+(1) temp := p ­.next;
+(2) new(p ­.next );
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (9 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+(3) p ­.next ­.element := x;
+(4) p ­.next ­.next := temp
+end; { INSERT }
+procedure DELETE ( p: position );
+begin
+p ­.next := p ­.next ­.next
+end; { DELETE }
+function LOCATE ( x: elementtype; L: LIST ): position;
+var
+p: position;
+begin
+p := L;
+while p ­.next <> nil
+do
+if p ­.next ­.element = x then
+return (p)
+else
+p := p ­.next;
+return (p) { if not found }
+end; { LOCATE }
+function MAKENULL ( var L: LIST ) : position;
+begin
+new(L);
+L ­.next := nil;
+return (L )
+end; { MAKENULL }
+Fig. 2.6. Some operations using the linked-list implementation.
+However, if the linked-list implementation is used, the value of p, which is a pointer
+to the cell containing b, does not change because of the insertion, so afterward, the
+value of p is "position 4," not 3. This position variable must be updated, if it is to be
+used subsequently as the position of b.†
+Fig. 2.7. Diagram of INSERT.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (10 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+Fig. 2.8. Diagram of DELETE.
+Comparison of Methods
+We might wonder whether it is best to use a pointer-based or array-based
+implementation of lists in a given circumstance. Often the answer depends on which
+operations we intend to perform, or on which are performed most frequently. Other
+times, the decision rests on how long the list is likely to get. The principal issues to
+consider are the following.
+1. The array implementation requires us to specify the maximum size of a list at
+compile time. If we cannot put a bound on the length to which the list will
+grow, we should probably choose a pointer-based implementation.
+2. Certain operations take longer in one implementation than the other. For
+example, INSERT and DELETE take a constant number of steps for a linked
+list, but require time proportional to the number of following elements when
+the array implementation is used. Conversely, executing PREVIOUS and
+END require constant time with the array implementation, but time
+proportional to the length of the list if pointers are used.
+3. If a program calls for insertions or deletions that affect the element at the
+position denoted by some position variable, and the value of that variable will
+be used later on, then the pointer representation cannot be used as we have
+described it here. As a general principle, pointers should be used with great
+care and restraint.
+4. The array implementation may waste space, since it uses the maximum
+amount of space independent of the number of elements actually on the list at
+any time. The pointer implementation uses only as much space as is needed
+for the elements currently on the list, but requires space for the pointer in each
+cell. Thus, either method could wind up using more space than the other in
+differing circumstances.
+Cursor-Based Implementation of Lists
+Some languages, such as Fortran and Algol, do not have pointers. If we are working
+with such a language, we can simulate pointers with cursors, that is, with integers
+that indicate positions in arrays. For all the lists of elements whose type is
+elementtype, we create one array of records; each record consists of an element and
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (11 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+an integer that is used as a cursor. That is, we define
+var
+SPACE: array [1..maxlength] of record
+element: elementtype;
+next: integer
+end
+If L is a list of elements, we declare an integer variable say Lhead, as a header for L.
+We can treat Lhead as a cursor to a header cell in SPACE with an empty element
+field. The list operations can then be implemented as in the pointer-based
+implementation just described.
+Here, we shall describe an alternative implementation that avoids the use of
+header cells by making special cases of insertions and deletions at position 1. This
+same technique can also be used with pointer-based linked-lists to avoid the use of
+header cells. For a list L, the value of SPACE[Lhead].element is the first element of
+L. The value of SPACE[Lhead].next is the index of the cell containing the second
+element, and so on. A value of 0 in either Lhead or the field next indicates a "nil
+pointer"; that is, there is no element following.
+A list will have type integer, since the header is an integer variable that represents
+the list as a whole. Positions will also be of type integer. We adopt the convention
+that position i of list L is the index of the cell of SPACE holding element i-1 of L,
+since the next field of that cell will hold the cursor to element i. As a special case,
+position 1 of any list is represented by 0. Since the name of the list is always a
+parameter of operations that use positions, we can distinguish among the first
+positions of different lists. The position END(L) is the index of the last element on L.
+Figure 2.9 shows two lists, L = a, b, c and M = d, e, sharing the array SPACE,
+with maxlength = 10. Notice that all the cells of the array that are not on either list
+are linked on another list called available. This list is necessary so we can obtain an
+empty cell when we want to insert into some list, and so we can have a place to put
+deleted cells for later reuse.
+Fig. 2.9. A cursor implementation of linked lists.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (12 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+To insert an element x into a list L we take the first cell in the available list and
+place it in the correct position of list L. Element x is then placed in the element field
+of this cell. To delete an element x from list L we remove the cell containing x from
+L and return it to the beginning of the available list. These two actions can be viewed
+as special cases of the act of taking a cell C pointed to by one cursor p and causing
+another cursor q to point to C, while making p point where C had pointed and
+making C point where q had pointed. Effectively, C is inserted between q and
+whatever q pointed to. For example, if we delete b from list L in Fig. 2.9, C is row 8
+of SPACE, p is SPACE[5].next, and q is available. The cursors before (solid) and
+after (dashed) this action are shown in Fig. 2.10, and the code is embodied in the
+function move of Fig. 2.11, which performs the move if C exists and returns false if
+C does not exist.
+Figure 2.12 shows the procedures INSERT and DELETE, and a procedure
+initialize that links the cells of the array SPACE into an available space list. These
+procedures omit checks for errors; the reader may insert them as an exercise. Other
+operations are left as exercises and are similar to those for pointer-based linked lists.
+Fig. 2.10. Moving a cell C from one list to another.
+function move ( var p, q: integer ): boolean;
+{ move puts cell pointed to by p ahead of cell pointed to by q }
+var
+temp: integer;
+begin
+if p = 0 then begin { cell nonexistent }
+writeln('cell does not exist');
+return (false)
+end
+else begin
+temp := q;
+q := p;
+p := SPACE[q ].next;
+SPACE[q ].next := temp;
+return (true)
+end
+end; { move }
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (13 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+Fig. 2.11. Code to move a cell.
+Doubly-Linked Lists
+In a number of applications we may wish to traverse a list both forwards and
+backwards efficiently. Or, given an element, we may wish to determine the
+preceding and following elements quickly. In such situations we might wish
+procedure INSERT ( x: elementtype; p: position; var L:
+LIST );
+begin
+if p = 0 then begin
+{ insert at first position }
+if move(available, L) then
+SPACE[L].element := x
+end
+else { insert at position other than first }
+if move(available, SPACE[p].next)
+then
+{ cell for x now pointed to by SPACE[p].next }
+SPACE[SPACE[p].next].element :=
+x
+end; { INSERT }
+procedure DELETE ( p: position; var L: LIST );
+begin
+if p = 0 then
+move(L, available)
+else
+move(SPACE[p].next, available)
+end; { DELETE }
+procedure initialize;
+{ initialize links SPACE into one available list }
+var
+i: integer;
+begin
+for i := maxsize - 1 downto 1 do
+SPACE[i].next := i + 1;
+available := 1;
+SPACE[maxsize].next := 0 { mark end of available list }
+end; { initialize }
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (14 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+Fig. 2.12. Some procedures for cursor-based linked lists.
+to give each cell on a list a pointer to both the next and previous cells on the list, as
+suggested by the doubly-linked list in Fig. 2.13. Chapter 12 mentions some specific
+situations where doubly-linked lists are essential for efficiency.
+Fig. 2.13. A doubly linked list.
+Another important advantage of doubly linked lists is that we can use a pointer to
+the cell containing the ith element of a list to represent position i, rather than using
+the less natural pointer to the previous cell. The only price we pay for these features
+is the presence of an additional pointer in each cell, and somewhat lengthier
+procedures for some of the basic list operations. If we use pointers (rather than
+cursors), we may declare cells consisting of an element and two pointers by
+type
+celltype = record
+element: elementtype;
+next, previous: ­ celltype
+end;
+position = ­ celltype;
+A procedure for deleting an element at position p in a doubly-linked list is given in
+Fig. 2.14. Figure 2.15 shows the changes in pointers caused by Fig. 2.14, with old
+pointers drawn solid and new pointers drawn dashed, on the assumption that the
+deleted cell is neither first nor last.† We first locate the preceding cell using the
+previous field. We make the next field of this cell point to the cell following the one
+in position p. Then we make the previous field of this following cell point to the cell
+preceding the one in position p. The cell pointed to by p becomes useless and should
+be reused automatically by the Pascal run-time system if needed.
+procedure DELETE (var p: position );
+begin
+if p­.previous <> nil
+then
+{ deleted cell not the first }
+p­.previous­.next: = p­.next;
+if p­.next <> nil
+then
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (15 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+{ deleted cell not the last }
+p­.next­.previous : = p­.previous
+end; { DELETE }
+Fig. 2.14. Deletion from a doubly linked list.
+Fig. 2.15. Pointer changes for implementation of a deletion.
+2.3 Stacks
+A stack is a special kind of list in which all insertions and deletions take place at one
+end, called the top. Other names for a stack are "pushdown list," and "LIFO" or "lastin-
+first-out" list. The intuitive model of a stack is a pile of poker chips on a table,
+books on a floor, or dishes on a shelf, where it is only convenient to remove the top
+object on the pile or add a new one above the top. An abstract data type in the
+STACK family often includes the following five operations.
+1. MAKENULL(S). Make stack S be an empty stack. This operation is exactly
+the same as for general lists.
+2. TOP(S). Return the element at the top of stack S. If, as is normal, we identify
+the top of a stack with position 1, then TOP(S) can be written in terms of list
+operations as RETRIEVE(FIRST(S), S).
+3. POP(S). Delete the top element of the stack, that is, DELETE(FIRST(S), S).
+Sometimes it is convenient to implement POP as a function that returns the
+element it has just popped, although we shall not do so here.
+4. PUSH(x, S). Insert the element x at the top of stack S. The old top element
+becomes next-to-top, and so on. In terms of list primitives this operation is
+INSERT(x, FIRST(S), S).
+5. EMPTY(S). Return true if S is an empty stack; return false otherwise.
+Example 2.2. Text editors always allow some character (for example, "backspace")
+to serve as an erase character, which has the effect of canceling the previous
+uncanceled character. For example, if '#' is the erase character, then the string
+abc#d##e is really the string ae. The first '#' cancels c, the second d, and the third b.
+Text editors also have a kill character, whose effect is to cancel all previous
+characters on the current line. For the purposes of this example, we shall use '@' as
+the kill character.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (16 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+A text editor can process a line of text using a stack. The editor reads one
+character at a time. If the character read is neither the kill nor the erase character, it
+pushes the character onto the stack. If the character read is the erase character, the
+editor pops the stack, and if it is the kill character, the editor makes the stack empty.
+A program that executes these actions is shown in Fig. 2.16.
+procedure EDIT;
+var
+S: STACK;
+c: char;
+begin
+MAKENULL(S);
+while not eoln do begin
+read(c);
+if c = '#' then
+POP(S)
+else if c = '@' then
+MAKENULL(S)
+else { c is an ordinary character }
+PUSH(c, S)
+end;
+print S in reverse order
+end; { EDIT }
+Fig. 2.16. Program to carry out effects of erase and kill characters.
+In this program, the type of STACK must be declared as a list of characters. The
+process of writing the stack in reverse order in the last line of the program is a bit
+tricky. Popping the stack one character at a time gets the line in reverse order. Some
+stack implementations, such as the array-based implementation to be discussed next,
+allow us to write a simple procedure to print the stack from the bottom. In general,
+however, to reverse a stack, we must pop each element and push it onto another
+stack; the characters can then be popped from the second stack and printed in the
+order they are popped.
+An Array Implementation of Stacks
+Every implementation of lists we have described works for stacks, since a stack with
+its operations is a special case of a list with its operations. The linked-list
+representation of a stack is easy, as PUSH and POP operate only on the header cell
+and the first cell on the list. In fact, headers can be pointers or cursors rather than
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (17 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+complete cells, since there is no notion of "position" for stacks, and thus no need to
+represent position 1 in a way analogous to other positions.
+However, the array-based implementation of lists we gave in Section 2.2 is not a
+particularly good one for stacks, as every PUSH or POP requires moving the entire
+list up or down, thus taking time proportional to the number of elements on the stack.
+A better arrangement for using an array takes account of the fact that insertions and
+deletions occur only at the top. We can anchor the bottom of the stack at the bottom
+(high-indexed end) of the array, and let the stack grow towards the top (low-indexed
+end) of the array. A cursor called top indicates the current position of the first stack
+element. This idea is shown in Fig. 2.17.
+Fig. 2.17. An array implementation of a stack.
+For this array-based implementation of stacks we define the abstract data type
+STACK by
+type
+STACK = record
+top: integer;
+elements: array[1..maxlength] of elementtype
+end;
+An instance of the stack consists of the sequence elements[top], elements[top+1] , . . .
+, elements[maxlength]. Note that if top = maxlength + 1, then the stack is empty.
+The five typical stack operations are implemented in Fig. 2.18. Note that for TOP
+to return an elementtype, that type must be legal as the result of a function. If not,
+TOP must be a procedure that modifies its second argument by assigning it the value
+TOP(S), or a function that returns a pointer to elementtype.
+procedure MAKENULL ( var S: STACK );
+begin
+S.top := maxlength + 1
+end; { MAKENULL }
+function EMPTY ( S: STACK ): boolean;
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (18 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+begin
+if S.top > maxlength then
+return (true)
+else
+return (false)
+end; { EMPTY }
+function TOP ( var S: STACK ) : elementtype;
+begin
+if EMPTY(S) then
+error('stack is empty')
+else
+return(S.elements[S.top])
+end; { TOP }
+procedure POP ( var S: STACK );
+begin
+if EMPTY(S) then
+error('stack is empty')
+else
+S.top := S.top + 1
+end; { POP }
+procedure PUSH ( x: elementtype; var S: STACK );
+begin
+if S.top = 1 then
+error('stack is full')
+else begin
+S.top := S.top - 1;
+S.elements[S.top]: = x
+end
+end; { PUSH }
+Fig. 2.18. Operations on stacks
+2.4 Queues
+A queue is another special kind of list, where items are inserted at one end (the rear)
+and deleted at the other end (the front). Another name for a queue is a "FIFO" or
+"first-in first-out" list. The operations for a queue are analogous to those for a stack,
+the substantial differences being that insertions go at the end of the list, rather than
+the beginning, and that traditional terminology for stacks and queues is different. We
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (19 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+shall use the following operations on queues.
+1. MAKENULL(Q) makes queue Q an empty list.
+2. FRONT(Q) is a function that returns the first element on queue Q.
+FRONT(Q) can be written in terms of list operations as
+RETRIEVE(FIRST(Q), Q).
+3. ENQUEUE(x, Q) inserts element x at the end of queue Q. In terms of list
+operations, ENQUEUE(x, Q) is INSERT(x, END(Q), Q).
+4. DEQUEUE(Q) deletes the first element of Q; that is, DEQUEUE(Q) is
+DELETE(FIRST(Q), Q).
+5. EMPTY(Q) returns true if and only if Q is an empty queue.
+A Pointer Implementation of Queues
+As for stacks, any list implementation is legal for queues. However, we can take
+advantage of the fact that insertions are only done at the rear to make ENQUEUE
+efficient. Instead of running down the list from beginning to end each time we wish
+to enqueue something, we can keep a pointer (or cursor) to the last element. As for
+all kinds of lists, we also keep a pointer to the front of the list; for queues that pointer
+is useful for executing FRONT and DEQUEUE commands. In Pascal, we shall use a
+dummy cell as a header and have the front pointer point to it. This convention allows
+us to handle an empty queue conveniently.
+Here we shall develop an implementation for queues that is based on Pascal
+pointers. The reader may develop a cursor-based implementation that is analogous,
+but we have available, in the case of queues, a better array-oriented representation
+than would be achieved by mimicking pointers with cursors directly. We shall
+discuss this so-called "circular array" implementation at the end of this section. To
+proceed with the pointer-based implementation, let us define cells as before:
+type
+celltype = record
+element: elementtype;
+next: ­ celltype
+end;
+Then we can define a list to consist of pointers to the front and rear of the queue. The
+first cell on a queue is a header cell in which the element field is ignored. This
+convention, as mentioned above, allows a simple representation for an empty queue.
+We define:
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (20 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+type
+QUEUE = record
+front, rear: ­ celltype
+end;
+Figure 2.19 shows programs for the five queue operations. In MAKENULL the first
+statement new(Q.front) allocates a variable of type celltype and assigns its address to
+Q.front. The second statement puts nil into the next field of that cell. The third
+statement makes the header both the first and last cell of the queue.
+The procedure DEQUEUE(Q) deletes the first element of Q by disconnecting the
+old header from the queue. The first element on the list becomes the new dummy
+header cell.
+Figure 2.20 shows the results created by the sequence of commands
+MAKENULL(Q), ENQUEUE(x, Q), ENQUEUE(y, Q), DEQUEUE(Q). Note that
+after dequeueing, the element x being in the element field of the header cell, is no
+longer considered part of the queue.
+A Circular Array Implementation of
+Queues
+The array representation of lists discussed in Section 2.2 can be used for queues, but
+it is not very efficient. True, with a pointer to the last element, we can execute
+ENQUEUE in a fixed number of steps, but DEQUEUE, which removes the first
+element, requires that the entire queue be moved up one position in the array. Thus
+DEQUEUE takes W(n) time if the queue has length n.
+To avoid this expense, we must take a different viewpoint. Think of an array as a
+circle, where the first position follows the last, as suggested in Fig. 2.21. The queue
+is found somewhere around the circle in consecutive positions,† with the rear of the
+queue somewhere clockwise from the front. To enqueue an element, we move the
+Q.rear pointer one position clockwise and write the element in that position. To
+dequeue, we simply move Q.front one position clockwise. Thus, the queue migrates
+in a clockwise direction as we enqueue and dequeue elements. Observe that the
+procedures ENQUEUE and DEQUEUE can be written to take some constant number
+of steps if the circular array model is used.
+There is one subtlety that comes up in the representation of Fig 2.21 and in any
+minor variation of that strategy (e.g., if Q.rear points one position clockwise of the
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (21 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+last element, rather than to that element itself). The problem is that there is no way to
+tell an empty queue from one that occupies the entire circle, short of maintaining a
+bit that is true if and only if the queue is empty. If we are not willing to maintain this
+bit, we must prevent the queue from ever filling the entire array.
+To see why, suppose the queue of Fig. 2.21 had maxlength elements. Then Q.rear
+would point one position counterclockwise of Q.front. What if the queue were
+empty? To see how an empty queue is represented, let us first consider a queue of
+one element. Then Q.front and Q.rear point to the same position. If we dequeue the
+one element, Q.front moves one position
+procedure MAKENULL ( var Q: QUEUE );
+begin
+new(Q.front); { create header cell }
+Q.front­.next := nil;
+Q.rear := Q.front { header is both first and last cell }
+end; { MAKENULL }
+function EMPTY ( Q: QUEUE): boolean;
+begin
+if Q.front = Q.rear then
+return (true)
+else
+return (false)
+end; { EMPTY }
+function FRONT ( Q: QUEUE ): elementtype;
+begin
+if EMPTY(Q) then
+error('queue is empty')
+else
+return (Q.front­.next­.element)
+end; { FRONT }
+procedure ENQUEUE ( x: elementtype; var Q: QUEUE );
+begin
+new(Q.rear­.next); { add new cell to
+rear of queue }
+Q.rear: = Q.rear­.next;
+Q.rear­.element := x;
+Q.rear­.next := nil
+end; { ENQUEUE }
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (22 of 40) [1.7.2001 18:58:59]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+procedure DEQUEUE ( var Q: QUEUE );
+begin
+if EMPTY(Q) then
+error('queue is empty')
+else
+Q.front := Q.front­.next
+end; { DEQUEUE }
+Fig. 2.19. Implementation of queue commands.
+clockwise; forming an empty queue. Thus an empty queue has Q.rear one position
+counterclockwise of Q.front, which is exactly the same relative position as when the
+queue had maxlength elements. We thus see that even though the array has
+maxlength places, we cannot let the queue grow longer than maxlength-1, unless we
+introduce another mechanism to distinguish empty queues.
+Fig. 2.20. A sequence of queue operations.
+Let us now write the five queue commands using this representation for a queue.
+Formally, queues are defined by:
+type
+QUEUE = record
+element: array[1..maxlength] of elementtype;
+front, rear: integer
+end;
+The commands appear in Fig. 2.22. The function addone(i) adds one to position i in
+the circular sense.
+Fig. 2.21. A circular implementation of queues.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (23 of 40) [1.7.2001 18:59:00]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+2.5 Mappings
+A mapping or associative store is a function from elements of one type, called the
+domain type to elements of another (possibly the same) type, called the range type.
+We express the fact that the mapping M associates element r of range type rangetype
+with element d of domain type domaintype by M(d) = r.
+Certain mappings such as square(i) = i2 can be implemented easily as a Pascal
+function by giving an arithmetic expression or other simple means for calculating
+M(d) from d. However, for many mappings there is no apparent way to describe
+M(d) other than to store for each d the value of M(d). For example, to implement a
+payroll function that associates with each employee a weekly salary seems to require
+that we store the current salary for each employee. In the remainder of this section
+we describe a method of implementing functions such as the "payroll" function.
+Let us consider what operations we might wish to perform on a mapping M.
+Given an element d of some domain type, we may wish to obtain M(d) or know
+whether M(d) is defined (i.e., whether d is currently in the domain of M). Or we may
+wish to enter new elements into the current domain of M and state their associated
+range values. Alternatively, we might wish to change the value of M(d). We also
+need a way to initialize a mapping to the null mapping, the mapping whose domain
+is empty. These operations are summarized by the following three commands.
+1. MAKENULL(M). Make M be the null mapping.
+2. ASSIGN(M, d, r). Define M(d) to be r, whether or not M(d) was defined
+previously.
+function addone ( i: integer ): integer;
+begin
+return (( i mod maxlength ) + 1)
+end; { addone }
+procedure MAKENULL ( var Q: QUEUE );
+begin
+Q.front := 1;
+Q.rear := maxlength
+end; { MAKENULL }
+function EMPTY ( var Q: QUEUE ): boolean;
+begin
+if addone(Q.rear) = Q.front then
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (24 of 40) [1.7.2001 18:59:00]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+return (true)
+else
+return (false)
+end; { EMPTY }
+function FRONT ( var Q: QUEUE ): elementtype;
+begin
+if EMPTY(Q) then
+error('queue is empty')
+else
+return (Q.elements[Q.front])
+end; { FRONT }
+procedure ENQUEUE ( x: elementtype; var Q: QUEUE );
+begin
+if addone (addone(Q.rear)) = Q.front then
+error('queue is full')
+else begin
+Q.rear := addone(Q.rear);
+Q.elements[Q.rear] := x
+end
+end; { ENQUEUE )
+procedure DEQUEUE ( var Q: QUEUE );
+begin
+if EMPTY(Q) then
+error('queue is empty')
+else
+Q.front := addone(Q.front)
+end; { DEQUEUE }
+Fig. 2.22. Circular queque implementation.
+3. COMPUTE(M, d, r). Return true and set variable r to M(d) if the latter is
+defined; return false otherwise.
+Array Implementation of Mappings
+Many times, the domain type of a mapping will be an elementary type that can be
+used as an index type of an array. In Pascal, the index types include all the finite
+subranges of integers, like 1..100 or 17..23, the type char and subranges of char like
+'A'..'Z', and enumerated types like (north, east, south, west). For example, a cipherhttp://
+www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (25 of 40) [1.7.2001 18:59:00]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+breaking program might keep a mapping crypt, with 'A'..'Z' as both its domain type
+and its range type, such that crypt (plaintext) is the letter currently guessed to stand
+for the letter plaintext.
+Such mappings can be implemented simply by arrays, provided there is some
+range type value that can stand for "undefined." For example, the above mapping
+crypt might be defined to have range type char, rather than 'A'..'Z', and '?' could be
+used to denote "undefined."
+Suppose the domain and range types are domaintype and rangetype, and
+domaintype is a basic Pascal type. Then we can define the type MAPPING (strictly
+speaking, mapping from domaintype to rangetype) by the declaration
+type
+MAPPING = array[domaintype] of rangetype;
+On the assumption that "undefined" is a constant of rangetype, and that firstvalue and
+lastvalue are the first and last values in domaintype,† we can implement the three
+commands on mappings as in Fig. 2.23.
+List Implementations of Mappings
+There are many possible implementations of mappings with finite domains. For
+example, hash tables are an excellent choice in many situations, but one whose
+discussion we shall defer to Chapter 4. Any mapping with a finite domain can be
+represented by the list of pairs (d1, r1), (d2, r2), . . . , (dk, rk), where d1, d2, . . . , dk are
+all the current members of the domain, and ri is the value that the mapping associates
+with di, for i = 1, 2 , . . . ,k. We can then use any implementation of lists we choose
+for this list of pairs.
+To be precise, the abstract data type MAPPING can be implemented by lists of
+elementtype, if we define
+type
+elementtype = record
+domain: domaintype;
+range: rangetype
+end;
+and then define MAPPING as we would define type LIST (of elementtype) in
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (26 of 40) [1.7.2001 18:59:00]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+procedure MAKENULL ( var M: MAPPING );
+var
+i: domaintype;
+begin
+for i := firstvalue to lastvalue do
+M[i] := undefined
+end; { MAKENULL }
+procedure ASSIGN ( var M: MAPPING;
+d: domaintype; r: rangetype );
+begin
+M[d] := r
+end; { ASSIGN }
+function COMPUTE ( var M: MAPPING;
+d: domaintype; var r: rangetype ): boolean;
+begin
+if M[d] = undefined then
+return (false)
+else begin
+r := M[d];
+return (true)
+end
+end; { COMPUTE }
+Fig. 2.23. Array implementation of mappings.
+whatever implementation of lists we choose. The three mapping commands are
+defined in terms of commands on type LIST in Fig. 2.24.
+2.6 Stacks and Recursive Procedures
+One important application of stacks is in the implementation of recursive procedures
+in programming languages. The run-time organization for a programming language
+is the set of data structures used to represent the values of the program variables
+during program execution. Every language that, like Pascal, allows recursive
+procedures, uses a stack of activation records to record the values for all the
+variables belonging to each active procedure of a program. When a procedure P is
+called, a new activation record for P is placed on the stack, regardless of whether
+there is already another activation record for P on the stack. When P returns, its
+activation record must be on top of the stack, since P cannot return until all
+procedures it has called have returned to P. Thus, we may pop the activation record
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (27 of 40) [1.7.2001 18:59:00]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+for this call of P to cause control to return to the point at which P was called (that
+point, known as the return address, was placed in P's activation record when the call
+to P
+procedure MAKENULL ( var M: MAPPING );
+{ same as for list }
+procedure ASSIGN ( var M: MAPPING;
+d: domaintype; r: rangetype );
+var
+x: elementtype; { the pair (d, r) }
+p: position; { used to go from first to last position on list M }
+begin
+x.domain := d;
+x.range := r;
+p := FIRST(M);
+while p <> END(M) do
+if RETRIEVE(p, M).domain = d then
+DELETE(p, M) { remove element with domain d }
+else
+p := NEXT(p, M);
+INSERT(x, FIRST(M), M) { put (d, r) at front of list }
+end; { ASSIGN }
+function COMPUTE ( var M: MAPPING;
+d: domaintype; var r: rangetype ): boolean;
+var
+p: position;
+begin
+p := FIRST(M);
+while p <> END(M) do begin
+if RETRIEVE(p, M).domain = d then begin
+r := RETRIEVE(p, M).range;
+return (true)
+end;
+p := NEXT(p, M)
+end;
+return (false) { if d is not in domain }
+end; { COMPUTE }
+Fig. 2.24. Mapping implementation in terms of lists.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1202.htm (28 of 40) [1.7.2001 18:59:00]
+Data Structures and Algorithms: CHAPTER 2: Basic Abstract DataTypes
+was made).
+Recursion simplifies the structure of many programs. In some languages,
+however, procedure calls are much more costly than assignment statements, so a
+program may run faster by a large constant factor if we eliminate recursive procedure
+calls from it. We do not advocate that recursion or other procedure calls be
+eliminated habitually; most often the structural simplicity is well worth the running
+time. However, in the most frequently executed portions of programs, we may wish
+to eliminate recursion, and it is the purpose of this discussion to illustrate how
+recursive procedures can be converted to nonrecursive ones by the introduction of a
+user-defined stack.
+Example 2.3. Let us consider recursive and nonrecursive solutions to a simplified
+version of the classic knapsack problem in which we are given target t and a
+collection of positive integer weights w1, w2 , . . . , wn. We are asked to determine
+whether there is some selection from among the weights that totals exactly t. For
+example, if t = 10, and the weights are 7, 5, 4, 4, and 1, we could select the second,
+third, and fifth weights, since 5+4+ 1 = 10.
+The image that justifies the name "knapsack problem" is that we wish to carry on
+our back no more than t pounds, and we have a choice of items with given weights to
+carry. We presumably find the items' utility to be proportional to their weight,† so
+we wish to pack our knapsack as closely to the target weight as we can.
+In Fig. 2.25 we see a function kna

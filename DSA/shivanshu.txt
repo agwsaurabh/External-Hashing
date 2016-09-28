@@ -1,0 +1,849 @@
+how the result of splitting the tree of Exercise 5.7 at 6.
+b. Merge the tree of Exercise 5.7 with the tree consisting of leaves
+for elements 10 and 11.
+5.11
+Some of the structures discussed in this chapter can be modified easily
+to support the MAPPING ADT. Write procedures MAKENULL,
+ASSIGN, and COMPUTE to operate on the following data structures.
+a. Binary search trees. The "<" ordering applies to domain elements.
+b. 2-3 trees. At interior nodes, place only the key field of domain
+elements.
+5.12
+Show that in any subtree of a binary search tree, the minimum element is
+at a node without a left child.
+5.13 Use Exercise 5.12 to produce a nonrecursive version of DELETE-MIN.
+5.14
+Write procedures ASSIGN, VALUEOF, MAKENULL and GETNEW
+for trie nodes represented as lists of cells.
+*5.15
+How do the trie (list of cells implementation), the open hash table, and
+the binary search tree compare for speed and for space utilization when
+elements are strings of up to ten characters?
+*5.16
+If elements of a set are ordered by a "<" relation, then we can keep one
+or two elements (not just their keys) at interior nodes of a 2-3 tree, and
+we then do not have to keep these elements at the leaves. Write INSERT
+and DELETE procedures for 2-3 trees of this type.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1205.htm (43 of 47) [1.7.2001 19:09:33]
+Data Structures and Algorithms: CHAPTER 5: Advanced Set Representation Methods
+5.17
+Another modification we could make to 2-3 trees is to keep only keys at
+interior nodes, but do not require that the keys k1 and k2 at a node truly
+be the minimum keys of the second and third subtrees, just that all keys
+k of the third subtree satisfy k ³ k2, all keys k of the second satisfy k1 £ k
+< k2, and all keys k of the first satisfy k < k1.
+a. How does this convention simplify the DELETE operation?
+b. Which of the dictionary and mapping operations are made more
+complicated or less efficient?
+*5.18
+Another data structure that supports dictionaries with the MIN operation
+is the AVL tree (named for the inventors' initials) or height-balanced
+tree. These trees are binary search trees in which the heights of two
+siblings are not permitted to differ by more than one. Write procedures
+to implement INSERT and DELETE, while maintaining the AVL-tree
+property.
+5.19 Write the Pascal program for procedure delete1 of Fig. 5.21.
+*5.20
+A finite automaton consists of a set of states, which we shall take to be
+the integers 1..n and a table transitions[state, input] giving a next state
+for each state and each input character. For our purposes, we shall
+assume that the input is always either 0 or 1. Further, certain of the states
+are designated accepting states. For our purposes, we shall assume that
+all and only the even numbered states are accepting. Two states p and q
+are equivalent if either they are the same state, or (i) they are both
+accepting or both nonaccepting, (ii) on input 0 they transfer to
+equivalent states, and (iii) on input 1 they transfer to equivalent states.
+Intuitively, equivalent states behave the same on all sequences of inputs;
+either both or neither lead to accepting states. Write a program using the
+MFSET operations that computes the sets of equivalent states of a given
+finite automaton.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1205.htm (44 of 47) [1.7.2001 19:09:33]
+Data Structures and Algorithms: CHAPTER 5: Advanced Set Representation Methods
+**5.21
+In the tree implementation of MFSET:
+a. Show that W(n log n) time is needed for certain lists of n
+operations if path compression is used but larger trees are
+permitted to be merged into smaller ones.
+b. Show that O(na(n)) is the worst case running time for n
+operations if path compression is used, and the smaller tree is
+always merged into the larger.
+5.22
+Select a data structure and write a program to compute PLACES
+(defined in Section 5.6) in average time O(n) for strings of length n.
+*5.23
+Modify the LCS procedure of Fig. 5.29 to compute the LCS, not just its
+length.
+*5.24 Write a detailed SPLIT procedure to work on 2-3 trees.
+*5.25
+If elements of a set represented by a 2-3 tree consist only of a key field,
+an element whose key appears at an interior node need not appear at a
+leaf. Rewrite the dictionary operations to take advantage of this fact and
+avoid storing any element at two different nodes.
+Bibliographic Notes
+Tries were first proposed by Fredkin [1960]. Bayer and McCreight [1972] introduced
+B-trees, which, as we shall see in Chapter 11, are a generalization of 2-3 trees. The
+first uses of 2-3 trees were by J. E. Hopcroft in 1970 (unpublished) for insertion,
+deletion, concatenation, and splitting, and by Ullman [1974] for a code optimization
+problem.
+The tree structure of Section 5.5, using path compression and merging smaller into
+larger, was first used by M. D. McIlroy and R. Morris to construct minimum-cost
+spanning trees. The performance of the tree implementation of MFSET's was
+analyzed by Fischer [1972] and by Hopcroft and Ullman [1973]. Exercise 5.21(b) is
+from Tarjan [1975].
+The solution to the LCS problem of Section 5.6 is from Hunt and Szymanski
+[1977]. An efficient data structure for FIND, SPLIT, and the restricted MERGE
+(where all elements of one set are less than those of the other) is described in van
+Emde Boas, Kaas, and Zijlstra [1977].
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1205.htm (45 of 47) [1.7.2001 19:09:33]
+Data Structures and Algorithms: CHAPTER 5: Advanced Set Representation Methods
+Exercise 5.6 is based on an efficient algorithm for matching patterns developed by
+Weiner [1973]. The 2-3 tree variant of Exercise 5.16 is discussed in detail in Wirth
+[1976]. The AVL tree structure in Exercise 5.18 is from Adel'son-Vel'skii and Landis
+[1962].
+† Recall the left child of the root is a descendant of itself, so we have not ruled out the
+possibility that x is at the left child of the root.
+† The highest-valued node among the descendants of the left child would do as well.
+† Recall that all logarithms are to the base 2 unless otherwise noted.
+† Trie was originally intended to be a homonym of "tree" but to distinguish these two
+terms many people prefer to pronounce trie as though it rhymes with "pie."
+† VALUEOF is a function version of COMPUTE in Section 2.5.
+† There is another version of 2-3 trees that places whole records at interior nodes, as a
+binary search tree does.
+† All nodes, however, take the largest amount of space needed for any variant types,
+so Pascal is not really the best language of implementing 2-3 trees in practice.M
+† A useful variant would take only a key value and delete any element with that key.
+† We say a is congruent to b modulo n if a and b have the same remainders when
+divided by n, or put another way, a-b is a multiple of n.
+† Note that n- 1 is the largest number of merges that can be performed before all
+elements are in one set.
+‡ Note that our ability to call the resulting component by the name of either of its
+constituents is important here, although in the simpler implementation, the name of
+the first argument was always picked.
+† Strictly speaking we should use a different name for the MERGE operation, as the
+implementation we propose will not work to compute the arbitrary union of disjoint
+sets, while keeping the elements sorted so operations like SPLIT and FIND can be
+performed.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1205.htm (46 of 47) [1.7.2001 19:09:33]
+Data Structures and Algorithms: CHAPTER 5: Advanced Set Representation Methods
+Table of Contents Go to Chapter 6
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1205.htm (47 of 47) [1.7.2001 19:09:33]
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_1.gif
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_1.gif [1.7.2001 19:09:42]
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_3.gif
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_3.gif [1.7.2001 19:09:57]
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_7.gif
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_7.gif [1.7.2001 19:10:04]
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_10.gif
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_10.gif [1.7.2001 19:10:13]
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_13.gif
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_13.gif [1.7.2001 19:10:19]
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_15.gif
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_15.gif [1.7.2001 19:10:28]
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_16.gif
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_16.gif [1.7.2001 19:10:44]
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_20.gif
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_20.gif [1.7.2001 19:10:48]
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_21.gif
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_21.gif [1.7.2001 19:10:53]
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_22.gif
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_22.gif [1.7.2001 19:10:59]
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_24.gif
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_24.gif [1.7.2001 19:11:14]
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_25.gif
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_25.gif [1.7.2001 19:11:36]
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_27.gif
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/images/fig4_27.gif [1.7.2001 19:11:53]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+Directed Graphs
+In problems arising in computer science, mathematics, engineering, and many other
+disciplines we often need to represent arbitrary relationships among data objects.
+Directed and undirected graphs are natural models of such relationships. This chapter
+presents the basic data structures that can be used to represent directed graphs. Some
+basic algorithms for determining the connectivity of directed graphs and for finding
+shortest paths are also presented.
+6.1 Basic Definitions
+A directed graph (digraph for short) G consists of a set of vertices V and a set of arcs
+E. The vertices are also called nodes or points; the arcs could be called directed edges
+or directed lines. An arc is an ordered pair of vertices (v, w); v is called the tail and w
+the head of the arc. The arc (v, w) is often expressed by v ® w and drawn as
+Notice that the "arrowhead" is at the vertex called the "head" and the tail of the arrow
+is at the vertex called the "tail." We say that arc v ® w is from v to w, and that w is
+adjacent to v.
+Example 6.1. Figure 6.1 shows a digraph with four vertices and five arcs.
+The vertices of a digraph can be used to represent objects, and the arcs
+relationships between the objects. For example, the vertices might represent cities
+and the arcs airplane flights from one city to another. As another example, which we
+introduced in Section 4.2, a digraph can be used to represent the flow of control in a
+computer program. The vertices represent basic blocks and the arcs possible transfers
+of flow of control.
+A path in a digraph is a sequence of vertices v1, v2, . . . , vn, such that v1 ® v2, v2
+® v3, . . . , vn-1 ® vn are arcs. This path is from vertex v1 to vertex vn, and passes
+through vertices v2, v3, . . . , vn-1, and ends at vertex vn. The length of a path is the
+number of arcs on the path, in this case, n-1. As a
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (1 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+Fig. 6.1. Directed graph.
+special case, a single vertex v by itself denotes a path of length zero from v to v. In
+Fig. 6.1, the sequence 1, 2, 4 is a path of length 2 from vertex 1 to vertex 4.
+A path is simple if all vertices on the path, except possibly the first and last, are
+distinct. A simple cycle is a simple path of length at least one that begins and ends at
+the same vertex. In Fig. 6.1, the path 3, 2, 4, 3 is a cycle of length three.
+In many applications it is useful to attach information to the vertices and arcs of
+a digraph. For this purpose we can use a labeled digraph, a digraph in which each arc
+and/or each vertex can have an associated label. A label can be a name, a cost, or a
+value of any given data type.
+Example 6.2. Figure 6.2 shows a labeled digraph in which each arc is labeled by a
+letter that causes a transition from one vertex to another. This labeled digraph has the
+interesting property that the arc labels on every cycle from vertex 1 back to vertex 1
+spell out a string of a's and b's in which both the number of a's and b's is even.
+In a labeled digraph a vertex can have both a name and a label. Quite frequently,
+we shall use the vertex label as the name of the vertex. Thus, the numbers in Fig. 6.2
+could be interpreted as vertex names or vertex labels.
+6.2 Representations for Directed Graphs
+Several data structures can be used to represent a directed graph. The appropriate
+choice of data structure depends on the operations that will be applied to the vertices
+and arcs of the digraph. One common representation for a digraph G = (V,E) is the
+adjacency matrix. Suppose V = {1, 2 , . . . , n}. The adjacency matrix for G is an n x n
+matrix A of booleans, where A[i, j] is true if and only if there is an arc from vertex i
+to j. Often, we shall exhibit adjacency matrices with 1 for true and 0 for false;
+adjacency matrices may even be implemented that way. In the adjacency matrix
+representation the time required to access an element of an adjacency matrix is
+independent of the size of V and E. Thus the adjacency matrix
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (2 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+Fig. 6.2. Transition digraph.
+representation is useful in those graph algorithms in which we frequently need to
+know whether a given arc is present.
+Closely related is the labeled adjacency matrix representation of a digraph,
+where A[i, j] is the label on the arc going from vertex i to vertex j. If there is no arc
+from i to j, then a value that cannot be a legitimate label must be used as the entry for
+A[i, j].
+Example 6.3. Figure 6.3 shows the labeled adjacency matrix for the digraph of Fig.
+6.2. Here, the label type is char, and a blank represents the absence of an arc.
+Fig. 6.3. Labeled adjacency matrix for digraph of Fig. 6.2.
+The main disadvantage of using an adjacency matrix to represent a digraph is
+that the matrix requires W(n2) storage even if the digraph has many fewer than n2
+arcs. Simply to read in or examine the matrix would require O(n2) time, which would
+preclude O(n) algorithms for manipulating digraphs with O(n) arcs.
+To avoid this disadvantage we can use another common representation for a
+digraph G = (V,E) called the adjacency list representation. The adjacency list for a
+vertex i is a list, in some order, of all vertices adjacent to i. We can represent G by an
+array HEAD, where HEAD[i] is a pointer to the adjacency list for vertex i. The
+adjacency list representation of a digraph requires storage proportional to sum of the
+number of vertices plus the number of arcs; it is often used when the number of arcs
+is much less than n2. However, a potential disadvantage of the adjacency list
+representation is that it may take O(n) time to determine whether there is an arc from
+vertex i to vertex j, since there can be O(n) vertices on the adjacency list for vertex i.
+Example 6.4. Figure 6.4 shows an adjacency list representation for the digraph of
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (3 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+Fig. 6.1, where singly linked lists are used. If arcs had labels, these could be included
+in the cells of the linked list.
+Fig. 6.4. Adjacency list representation for digraph of Fig. 6.1.
+If we did insertions and deletions from the adjacency lists, we might prefer to
+have the HEAD array point to header cells that did not contain adjacent vertices.†
+Alternatively, if the graph were expected to remain fixed, with no (or very few)
+changes to be made to the adjacency lists, we might prefer HEAD[i] to be a cursor to
+an array ADJ, where ADJ[HEAD[i]], ADJ[HEAD[i]+ 1] , . . . , and so on, contained
+the vertices adjacent to vertex i, up to that point in ADJ where we first encounter a 0,
+which marks the end of the list of adjacent vertices for i. For example, Fig. 6.1 could
+be represented as in Fig. 6.5.
+Directed Graph ADT's
+We could define an ADT corresponding to the directed graph formally and study
+implementations of its operations. We shall not pursue this direction extensively,
+because there is little of a surprising nature, and the principal data structures for
+graphs have already been covered. The most common operations on directed graphs
+include operations to read the label of a vertex or arc, to insert or delete vertices and
+arcs, and to navigate by following arcs
+Fig. 6.5. Another adjacency list representation of Fig. 6.1.
+from tail to head.
+The latter operations require a little thought. Most frequently, we shall encounter
+in informal programs statements like
+for each vertex w adjacent to vertex v do (6.1)
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (4 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+{ some action on w }
+To implement such a step, we need the notion of an index type for the set of vertices
+adjacent to some one vertex v. For example, if adjacency lists are used to represent
+the graph, then an index is really a position on the adjacency list for v. If an
+adjacency matrix is used, an index is an integer representing an adjacent vertex. We
+need the following three operations on directed graphs.
+1. FIRST(v) returns the index for the first vertex adjacent to v. The index for the
+null vertex L is returned if there is no vertex adjacent to v.
+2. NEXT(v, i) returns the index after index i for the vertices adjacent to v. L is
+returned if i is the last index for vertices adjacent to v.
+3. VERTEX(v, i) returns the vertex with index i among the vertices adjacent to v.
+Example 6.5. If the adjacency matrix representation is chosen, VERTEX(v, i) returns
+i. FIRST(v) and NEXT(v, i) can be written as in Fig. 6.6 to operate on an externally
+defined n x n boolean matrix A. We assume A is declared
+array [1..n, 1..n] of boolean
+and that 0 is used for L. We can then implement the statement (6.1) as in Fig. 6.7.
+Note that FIRST(v) can also be implemented as NEXT(v, 0).
+function FIRST ( v: integer ): integer;
+var
+i: integer;
+begin
+for i := 1 to n do
+if A[v, i] then
+return (i);
+return (0) { if we reach here, v has no adjacent vertex }
+end; { FIRST }
+function NEXT ( v: integer; i: integer ): integer;
+var
+j: integer;
+begin
+for j := i + 1 to n do
+if A[v, j] then
+return (j);
+return (0)
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (5 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+end; { NEXT }
+Fig. 6.6. Operations to scan adjacent vertices.
+i := FIRST(v);
+while i <> L do begin
+w := VERTEX(v, i);
+{ some action on w }
+i := NEXT(v, i)
+end
+Fig. 6.7. Iteration over vertices adjacent to v.
+6.3 The Single Source Shortest Paths
+Problem
+In this section we consider a common path-finding problem on directed graphs. We
+are given a directed graph G = (V, E) in which each arc has a nonnegative label, and
+one vertex is specified as the source. Our problem is to determine the cost of the
+shortest path from the source to every other vertex in V, where the length of a path is
+just the sum of the costs of the arcs on the path. This problem is often called the
+single-source shortest paths problem.† Note that we shall talk of paths as having
+"length" even if costs represent something different, like time.
+We might think of G as a map of airline flights, in which each vertex represents a
+city and each arc v ® w an airline route from city v to city w. The label on arc v ® w
+is the time to fly from v to w.‡ Solving the single-source shortest paths problem for
+this directed graph would determine the minimum travel time from a given city to
+every other city on the map.
+To solve this problem we shall use a "greedy" technique, often known as
+Dijkstra's algorithm. The algorithm works by maintaining a set S of vertices whose
+shortest distance from the source is already known. Initially, S contains only the
+source vertex. At each step, we add to S a remaining vertex v whose distance from
+the source is as short as possible. Assuming all arcs have nonnegative costs, we can
+always find a shortest path from the source to v that passes only through vertices in S.
+Call such a path special. At each step of the algorithm, we use an array D to record
+the length of the shortest special path to each vertex. Once S includes all vertices, all
+paths are "special," so D will hold the shortest distance from the source to each
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (6 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+vertex.
+The algorithm itself is given in Fig. 6.8. It assumes that we are given a directed
+graph G = (V, E) where V = {1, 2, . . . , n} and vertex 1 is the source. C is a twodimensional
+array of costs, where C[i, j] is the cost of going from vertex i to vertex j
+on arc i ® j. If there is no arc i ® j, then we assume C[i, j] is ¥, some value much
+larger than any actual cost. At each step D [i] contains the length of the current
+shortest special path to vertex i.
+Example 6.6. Let us apply Dijkstra to the directed graph of Fig. 6.9. Initially, S =
+{1}, D[2] = 10, D[3] = ¥, D[4] = 30 and D[5] = 100. In the first iteration of the forloop
+of lines (4)-(8), w = 2 is selected as the vertex with the minimum D value. Then
+we set D[3] = min(¥, 10+50)= 60. D(4) and D(5) do not change, because reaching
+them from 1 directly is shorter than going through vertex 2. The sequence of Dvalues
+after each iteration of the for-loop is shown in Fig. 6.10.
+If we wish to reconstruct the shortest path from the source to each vertex, then
+we can maintain another array P of vertices, such that P [v] contains the vertex
+immediately before vertex v in the shortest path. Initialize P[v] to 1 for all v ¹ 1. The
+P-array can be updated right after line (8) of Dijkstra. If D[w]+C[w,v]<D[v] at line
+(8), then we set P[v]:= w. Upon termination
+procedure Dijkstra;
+{ Dijkstra computes the cost of the shortest paths
+from vertex 1 to every vertex of a directed graph }
+begin
+(1) S := {1};
+(2) for i := 2 to n do
+(3) D[i] := C[1, i]; { initialize D }
+(4) for i := 1 to n-1 do begin
+(5) choose a vertex w in V-S such that
+D[w] is a minimum;
+(6) add w to S;
+(7) for each vertex v in V-S do
+(8) D[v] := min(D[v], D[w] +
+C[w, v])
+end
+end; { Dijkstra }
+Fig. 6.8. Dijkstra's algorithm.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (7 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+Fig. 6.9. Digraph with labeled arcs.
+of Dijkstra the path to each vertex can be found by tracing backward the predecessor
+vertices in the P-array.
+Example 6.7. For the digraph in Example 6.6 the P-array would have the values P[2]
+= 1, P[3] = 4, P[4] = 1, and P[5] = 3. To find the shortest path from vertex 1 to vertex
+5, for example, we would trace the predecessors in reverse order beginning at vertex
+5. From the P-array we determine 3 is the predecessor of 5, 4 the predecessor of 3,
+and 1 the predecessor of 4. Thus the shortest path from vertex 1 to vertex 5 is 1, 4, 3,
+5.
+Fig. 6.10. Computation of Dijkstra on digraph of Fig. 6.9.
+Why Dijkstra's Algorithm Works
+Dijkstra's algorithm is an example where "greed" pays off, in the sense that what
+appears locally as the best thing to do turns out to be the best over all. In this case, the
+locally "best" thing to do is to find the distance to the vertex w that is outside S but
+has the shortest special path. To see why in this case there cannot be a shorter
+nonspecial path from the source to w, observe Fig. 6.11. There we show a
+hypothetical shorter path to w that first leaves S to go to vertex x, then (perhaps)
+wanders into and out of S several times before ultimately arriving at w.
+But if this path is shorter than the shortest special path to w, then the initial
+segment of the path from the source to x is a special path to x shorter than the shortest
+special path to w. (Notice how important the fact that costs are nonnegative is here;
+without it our argument wouldn't work, and in fact Dijkstra's algorithm would not
+work correctly.) In that case, when we selected w at line (5) of Fig. 6.8, we should
+have selected x instead, because D [x] was less than D [w].
+To complete a proof that Fig. 6.8 works, we should verify that at all times D [v]
+is truly the shortest distance of a special path to vertex v. The crux of this argument is
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (8 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+in observing that when we add a new vertex w to S at line (6), lines (7) and (8) adjust
+D to take account of the possibility that there is now a shorter special path to v going
+through w. If that path goes through the old S to w and then immediately to v, its cost,
+D [w]+C [w, v], will be compared with D [v] at line (8), and D [v] will be reduced if
+the new special path is shorter. The only other possibility for a shorter special path is
+shown in Fig. 6.12, where the path travels to w, then back into the old S, to some
+member x of the old S, then to v.
+But there really cannot be such a path. Since x was placed in S before w, the
+shortest of all paths from the source to x runs through the old S alone. Therefore, the
+path to x through w shown in Fig. 6.12 is no shorter than the path directly to x
+through S. As a result, the length of the path in Fig. 6.12 from the source to w, x, and
+v is no less from the old value of D [v], since D [v] was no greater than the length of
+the shortest path to x through S and then directly to v. Thus D [v] cannot be reduced
+at line (8) by a path through w and x as in Fig. 6.12, and we need not consider the
+length of such paths.
+Fig. 6.11. Hypothetical shorter path to w.
+Fig. 6.12. Impossible shortest special path.
+Running Time of Dijkstra's Algorithm
+Suppose Fig. 6.8 operates on a digraph with n vertices and e edges. If we use an
+adjacency matrix to represent the digraph, then the loop of lines (7) and (8) takes
+O(n) time, and it is executed n-1 times for a total time of O(n2). The rest of the
+algorithm is easily seen to require no more time than this.
+If e is much less than n2, we might do better by using an adjacency list
+representation of the digraph and using a priority queue implemented as a partially
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (9 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+ordered tree to organize the vertices in V-S. The loop of lines (7) and (8) can then be
+implemented by going down the adjacency list for w and updating the distances in the
+priority queue. A total of e updates will be made, each at a cost of O(logn) time, so
+the total time spent in lines (7) and (8) is now O(elogn), rather than O(n2).
+Lines (1)-(3) clearly take O(n) time, as do lines (4) and (6). Using the priority
+queue to represent V-S, lines (5)-(6) implement exactly the DELETEMIN operation,
+and each of the n-1 iterations of these lines requires O(logn) time.
+As a result, the total time spent on this version of Dijkstra's algorithm is bounded
+by O(elogn). This running time is considerably better than O(n2) if e is very small
+compared with n2.
+6.4 The All-Pairs Shortest Paths Problem
+Suppose we have a labeled digraph that gives the flying time on certain routes
+connecting cities, and we wish to construct a table that gives the shortest time
+required to fly from any one city to any other. We now have an instance of the allpairs
+shortest paths (APSP) problem. To state the problem precisely, we are given a
+directed graph G = (V, E) in which each arc v ® w has a non-negative cost C[v, w].
+The APSP problem is to find for each ordered pair of vertices (v, w) the smallest
+length of any path from v to w.
+We could solve this problem using Dijkstra's algorithm with each vertex in turn
+as the source. A more direct way of solving the problem is to use the following
+algorithm due to R. W. Floyd. For convenience, let us again assume the vertices in V
+are numbered 1, 2 , . . . , n. Floyd's algorithm uses an n x n matrix A in which to
+compute the lengths of the shortest paths. We initially set A[i, j] = C[i, j] for all i ¹ j.
+If there is no arc from i to j, we assume C[i, j] = ¥. Each diagonal element is set to 0.
+We then make n iterations over the A matrix. After the kth iteration, A[i, j] will
+have for its value the smallest length of any path from vertex i to vertex j that does
+not pass through a vertex numbered higher than k. That is to say, i and j, the end
+vertices on the path, may be any vertex, but any intermediate vertex on the path must
+be less than or equal to k.
+In the kth iteration we use the following formula to compute A.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (10 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+The subscript k denotes the value of the A matrix after the kth iteration, and it should
+not be assumed that there are n different matrices. We shall eliminate these subscripts
+shortly. This formula has the simple interpretation shown in Fig. 6.13.
+To compute Ak[i, j] we compare Ak- 1[i, j], the cost of going from i to j without
+going through k or any higher-numbered vertex, with Ak-1[i, k] + Ak- 1[k, j], the cost
+of going first from i to k and then from k to j, without passing through a vertex
+numbered higher than k. If passing through vertex k produces a cheaper path than
+what we had for Ak- 1[i, j], then we choose that cheaper cost for Ak[i, j].
+Fig. 6.13. Including k among the vertices to go from i to j.
+Example 6.8. Consider the weighted digraph shown in Fig. 6.14. The values of the A
+matrix initially and after the three iterations are shown in Fig. 6.15.
+Fig. 6.14. Weighted digraph.
+Since Ak[i, k] = Ak-1[i, k] and Ak[k, j] = Ak-1[k, j], no entry with either subscript
+equal to k changes during the kth iteration. Therefore, we can perform the
+computation with only one copy of the A matrix. A program to perform this
+computation on n x n matrices is shown in Fig. 6.16.
+The running time of this program is clearly O(n3), since the program is basically
+nothing more than a triply nested for-loop. To verify that this program works, it is
+easy to prove by induction on k that after k passes through the triple for-loop, A[i, j]
+holds the length of the shortest path from vertex i to vertex j that does not pass
+through a vertex numbered higher than k.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (11 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+Fig. 6.15. Values of successive A matrices.
+procedure Floyd ( var A: array[1..n, 1..n]
+of real;
+C: array[1..n, 1..n] of real );
+{ Floyd computes shortest path matrix A given arc cost matrix C }
+var
+i, j, k: integer;
+begin
+for i := 1 to n do
+for j := 1 to n do
+A[i, j] := C[i, j];
+for i:= 1 to n do
+A[i, i] := 0;
+for k:= 1 to n do
+for i := 1 to n do
+for j:= 1 to n do
+if A[i, k] + A[k, j] < A
+[i, j] then
+A[i, j] := A[i, k] + A[k,
+j]
+end; { Floyd }
+Fig. 6.16. Floyd's algorithm.
+Comparison Between Floyd's and
+Dijkstra's Algorithms
+Since the adjacency-matrix version of Dijkstra finds shortest paths from one vertex in
+O(n2) time, it, like Floyd's algorithm, can find all shortest paths in O(n3) time. The
+compiler, machine, and implementation details will determine the constants of
+proportionality. Experimentation and measurement are the easiest way to ascertain
+the best algorithm for the application at hand.
+If e, the number of edges, is very much less than n2, then despite the relatively
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (12 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+low constant factor in the O(n3) running time of Floyd, we would expect the
+adjacency list version of Dijkstra, taking O(ne logn) time to solve the APSP, to be
+superior, at least for large sparse graphs.
+Recovering the Paths
+In many situations we may want to print out the cheapest path from one vertex to
+another. One way to accomplish this is to use another matrix P, where P[i, j] holds
+that vertex k that led Floyd to find the smallest value of A[i, j]. If P[i, j]=0, then the
+shortest path from i to j is direct, following the arc from i to j. The modified version
+of Floyd in Fig. 6.17 stores the appropriate intermediate vertices into P.
+procedure shortest ( var A: array[1..n, 1..n]
+of real;
+C: array[1..n, 1..n] of real; P:
+array[1..n, 1..n] of integer );
+{ shortest takes an n X n matrix C of arc costs and produces an
+n X n matrix A of lengths of shortest paths and an n X n
+matrix
+P giving a point in the "middle" of each shortest path }
+var
+i, j, k: integer;
+begin
+for i:= 1 to n do
+for j := 1 to n do begin
+A[i, j] := C[i, j];
+P[i, j] := 0
+end;
+for i:= 1 to n do
+A[i, i] := 0;
+for k := 1 to n do
+for i:= 1 to n do
+for j:= 1 to n do
+if A[i, k] + A[k, j] <
+A[i, j] then begin
+A[i, j] := A[i, k] + A[k,
+j];
+P[i, j] := k
+end
+end; { shortest }
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (13 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+Fig. 6.17. Shortest paths program.
+To print out the intermediate vertices on the shortest path from vertex i to vertex
+j, we invoke the procedure path(i, j) where path is given in Fig. 6.18. While on an
+arbitrary matrix P, path could loop forever, if P comes from shortest, we could not,
+say, have k on the shortest path from i to j and also have j on the shortest path from i
+to k. Note how our assumption of nonnegative weights is again crucial.
+procedure path ( i, j: integer );
+var
+k: integer;
+begin
+k := P[i, j];
+if k = 0 then
+return;
+path(i, k);
+writeln(k);
+path(k, j)
+end; { path }
+Fig. 6.18. Procedure to print shortest path.
+Example 6.9. Figure 6.19 shows the final P matrix for the digraph of Fig. 6.14.
+Fig. 6.19. P matrix for digraph of Fig. 6.14.
+Transitive Closure
+In some problems we may be interested in determining only whether there exists a
+path of length one or more from vertex i to vertex j. Floyd's algorithm can be
+specialized readily to this problem; the resulting algorithm, which predates Floyd's, is
+called Warshall's algorithm.
+Suppose our cost matrix C is just the adjacency matrix for the given digraph.
+That is, C[i, j] = 1 if there is an arc from i to j, and 0 otherwise. We wish to compute
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (14 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+the matrix A such that A[i, j] = 1 if there is a path of length one or more from i to j,
+and 0 otherwise. A is often called the transitive closure of the adjacency matrix.
+Example 6.10. Figure 6.20 shows the transitive closure for the adjacency matrix of
+the digraph of Fig. 6.14.
+The transitive closure can be computed using a procedure similar to Floyd by
+applying the following formula in the kth pass over the boolean A matrix.
+Ak[i, j] = Ak-1[i,
+j] or (Ak-1[i, k] and Ak-
+1[k, j])
+This formula states that there is a path from i to j not passing through a
+Fig. 6.20. Transitive closure.
+vertex numbered higher than k if
+1. there is already a path from i to j not passing through a vertex numbered
+higher than k- 1 or
+2. there is a path from i to k not passing through a vertex numbered higher than k
+- 1 and a path from k to j not passing through a vertex numbered higher than k-
+1.
+As before Ak[i, k] = Ak-1[i, k] and Ak[k, j] = Ak-1[k, j] so we can perform the
+computation with only one copy of the A matrix. The resulting Pascal program,
+named Warshall after its discoverer, is shown in Fig. 6.21.
+procedure Warshall ( var A: array[1..n, 1..n
+] of boolean;
+C: array[1..n, 1..n] of boolean );
+{ Warshall makes A the transitive closure of C }
+var
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (15 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+i, j, k: integer;
+begin
+for i := 1 to n do
+for j := 1 to n do
+A[i, j] := C[i, j];
+for k := 1 to n do
+for i := 1 to n do
+for j := 1 to n do
+if A[i, j ] = false then
+A[i, j] := A[i, k] and
+A[k, j]
+end; { Warshall }
+Fig. 6.21. Warshall's algorithm for transitive closure.
+An Example: Finding the Center of a
+Digraph
+Suppose we wish to determine the most central vertex in a digraph. This problem can
+be readily solved using Floyd's algorithm. First, let us make more precise the term
+"most central vertex." Let v be a vertex in a digraph G = (V, E). The eccentricity of v
+is
+The center of G is a vertex of minimum eccentricity. Thus, the center of a digraph is
+a vertex that is closest to the vertex most distant from it.
+Example 6.11. Consider the weighted digraph shown in Fig. 6.22.
+Fig. 6.22. Weighted digraph.
+The eccentricities of the vertices are
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (16 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+vertex eccentricity
+a ¥
+b 6
+c 8
+d 5
+e 7
+Thus the center is vertex d.
+Finding the center of a digraph G is easy. Suppose C is the cost matrix for G.
+1. First apply the procedure Floyd of Fig. 6.16 to C to compute the all-pairs
+shortest paths matrix A.
+2. Find the maximum cost in each column i. This gives us the eccentricity of
+vertex i.
+3. Find a vertex with minimum eccentricity. This is the center of G.
+This running time of this process is dominated by the first step, which takes O(n3)
+time. Step (2) takes O(n2) time and step (3) O(n) time.
+Example 6.12. The APSP cost matrix for Fig. 6.22 is shown in Fig. 6.23. The
+maximum value in each column is shown below.
+Fig. 6.23. APSP cost matrix.
+6.5 Traversals of Directed Graphs
+To solve many problems dealing with directed graphs efficiently we need to visit the
+vertices and arcs of a directed graph in a systematic fashion. Depth-first search, a
+generalization of the preorder traversal of a tree, is one important technique for doing
+so. Depth-first search can serve as a skeleton around which many other efficient
+graph algorithms can be built. The last two sections of this chapter contain several
+algorithms that use depth-first search as a foundation.
+Suppose we have a directed graph G in which all vertices are initially marked
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (17 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+unvisited. Depth-first search works by selecting one vertex v of G as a start vertex; v
+is marked visited. Then each unvisited vertex adjacent to v is searched in turn, using
+depth-first search recursively. Once all vertices that can be reached from v have been
+visited, the search of v is complete. If some vertices remain unvisited, we select an
+unvisited vertex as a new start vertex. We repeat this process until all vertices of G
+have been visited.
+This technique is called depth-first search because it continues searching in the
+forward (deeper) direction as long as possible. For example, suppose x is the most
+recently visited vertex. Depth-first search selects some unexplored arc x ® y
+emanating from x. If y has been visited, the procedure looks for another unexplored
+arc emanating from x. If y has not been visited, then the procedure marks y visited
+and initiates a new search at y. After completing the search through all paths
+beginning at y, the search returns to x, the vertex from which y was first visited. The
+process of selecting unexplored arcs emanating from x is then continued until all arcs
+from x have been explored.
+An adjacency list L[v] can be used to represent the vertices adjacent to vertex v,
+and an array mark, whose elements are chosen from (visited, unvisited), can be used
+to determine whether a vertex has been previously visited. The recursive procedure
+dfs is outlined in Fig. 6.24. To use it on an n-vertex graph, we initialize mark to
+unvisited and then commence a depth-first search from each vertex that is still
+unvisited when its turn comes, by
+for v := 1 to n do
+mark[v] := unvisited;
+for v := 1 to n do
+if mark[v] = unvisited then
+dfs( v )
+Note that Fig. 6.24 is a template to which we shall attach other actions later, as we
+apply depth-first search. The code in Fig. 6.24 doesn't do anything but set the mark
+array.
+Analysis of Depth-First Search
+All the calls to dfs in the depth-first search of a graph with e arcs and n £ e vertices
+take O(e) time. To see why, observe that on no vertex is dfs called more than once,
+because as soon as we call dfs(v) we set mark[v] to visited at line (1), and we never
+call dfs on a vertex that previously had its mark set to visited. Thus, the total time
+spent at lines (2)-(3) going down the adjacency lists is proportional to the sum of the
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (18 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+lengths of those lists, that is, O(e). Thus, assuming n£e, the total time spent on the
+depth- first search of an entire graph is O(e), which is, to within a constant factor, the
+time needed merely to "look at" each arc.
+procedure dfs ( v: vertex );
+var
+w: vertex;
+begin
+(1) mark[v]: = visited;
+(2) for each vertex w on L[v] do
+(3) if mark[w] = unvisited then
+(4) dfs(w)
+end; { dfs }
+Fig. 6.24. Depth-first search.
+Example 6.13. Assume the procedure dfs(v) is applied to the directed graph of Fig.
+6.25 with v = A. The algorithm marks A visited and selects vertex B from the
+adjacency list of vertex A. Since B is unvisited, the search continues by calling dfs(B).
+The algorithm now marks B visited and selects the first vertex from the adjacency list
+for vertex B. Depending on the order of the vertices on the adjacency list of B the
+search will go to C or D next.
+Assuming that C appears ahead of D, dfs(C) is invoked. Vertex A is on the
+adjacency list of C. However, A is already visited at this point so the
+Fig. 6.25. Directed graph.
+search remains at C. Since all vertices on the adjacency list at C have now been
+exhausted, the search returns to B, from which the search proceeds to D. Vertices A
+and C on the adjacency list of D were already visited, so the search returns to B and
+then to A.
+At this point the original call of dfs(A) is complete. However, the digraph has not
+been entirely searched; vertices E, F and G are still unvisited. To complete the
+search, we can call dfs(E).
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (19 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+The Depth-first Spanning Forest
+During a depth-first traversal of a directed graph, certain arcs, when traversed, lead to
+unvisited vertices. The arcs leading to new vertices are called tree arcs and they form
+a depth-first spanning forest for the given digraph. The solid arcs in Fig. 6.26 form a
+depth-first spanning forest for the digraph of Fig. 6.25. Note that the tree arcs must
+indeed form a forest, since a vertex cannot be unvisited when two different arcs to it
+are traversed.
+In addition to the tree arcs, there are three other types of arcs defined by a depthfirst
+search of a directed graph. These are called back arcs, forward arcs, and cross
+arcs. An arc such as C ® A is called a back arc, since it goes from a vertex to one of
+its ancestors in the spanning forest. Note that an arc from a vertex to itself is a back
+arc. A nontree arc that goes from a vertex to a proper descendant is called a forward
+arc. There are no forward arcs in Fig. 6.26.
+Arcs such as D ® C or G ® D, which go from a vertex to another vertex that is
+neither an ancestor nor a descendant, are called cross arcs. Observe that all cross arcs
+in Fig. 6.26 go from right to left, on the assumption that we add children to the tree in
+the order they were visited, from left to right, and that we add new trees to the forest
+from left to right. This pattern is not accidental. Had the arc G ® D been the arc D ®
+G, then G would have been unvisited when the search at D was in progress, and thus
+on encountering arc D ® G, vertex G would have been made a descendant of D, and
+D ® G would have become a tree arc.
+Fig. 6.26. Depth-first spanning forest for Fig. 6.25.
+How do we distinguish among the four types of arcs? Clearly tree arcs are
+special since they lead to unvisited vertices during the depth-first search. Suppose we
+number the vertices of a directed graph in the order in which we first mark them
+visited during a depth-first search. That is, we may assign to an array
+dfnumber [v] := count;
+count : = count + 1;
+after line (1) of Fig. 6.24. Let us call this the depth-first numbering of a directed
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (20 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+graph; notice how depth-first numbering generalizes the preorder numbering
+introduced in Section 3.1.
+All descendants of a vertex v are assigned depth-first search numbers greater
+than or equal to the number assigned v. In fact, w is a descendant of v if and only if
+dfnumber(v) £ dfnumber(w) £ dfnumber(v) + number of descendants of v. Thus,
+forward arcs go from low-numbered to high-numbered vertices and back arcs go
+from high-numbered to low-numbered vertices.
+All cross arcs go from high-numbered vertices to low-numbered vertices. To see
+this, suppose that x ® y is an arc and dfnumber(x) £ dfnumber(y). Thus x is visited
+before y. Every vertex visited between the time dfs(x) is first invoked and the time
+dfs(x) is complete becomes a descendant of x in the depth-first spanning forest. If y is
+unvisited at the time arc x ® y is explored, x ® y becomes a tree arc. Otherwise, x ®
+y is a forward arc. Thus there can be no cross arc x ® y with dfnumber (x) £
+dfnumber (y).
+In the next two sections we shall show how depth- first search can be used in
+solving various graph problems.
+6.6 Directed Acyclic Graphs
+A directed acyclic graph, or dag for short, is a directed graph with no cycles.
+Measured in terms of the relationships they can represent, dags are more general than
+trees but less general than arbitrary directed graphs. Figure 6.27 gives an example of
+a tree, a dag, and a directed graph with a cycle.
+Fig. 6.27. Three directed graphs.
+Among other things, dags are useful in representing the syntactic structure of
+arithmetic expressions with common subexpressions. For example, Fig. 6.28 shows a
+dag for the expression
+((a+b)*c + ((a+b)+e) * (e+f)) * ((a+b)*c)
+The terms a+b and (a+b)*c are shared common subexpressions that are represented
+by vertices with more than one incoming arc.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (21 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+Dags are also useful in representing partial orders. A partial order R on a set S is
+a binary relation such that
+1. for all a in S, a R a is false (R is irreflexive)
+2. for all a, b, c in S, if a R b and b R c, then a R c (R is transitive)
+Two natural examples of partial orders are the "less than" (<) relation on
+integers, and the relation of proper containment (Ì) on sets.
+Example 6.14. Let S = {1, 2, 3} and let P(S) be the power set of S, that is, the set of
+all subsets of S. P(S) = {Ø, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}}. Ì is a partial
+order on P(S). Certainly, A Ì A is false for any set A (irreflexivity), and if A Ì B and
+B Ì C, then A Ì C (transitivity).
+Dags can be used to portray partial orders graphically. To begin, we can view a
+relation R as a set of pairs (arcs) such that (a, b) is in the set if and only if a R b is
+true. If R is a partial order on a set S, then the directed graph G = (S ,R) is a dag.
+Conversely, suppose G = (S ,R) is a dag and R+ is the relation defined by a R+ b if
+and only if there is a path of length one or
+Fig. 6.28. Dag for arithmetic expression.
+more from a to b. (R+ is the transitive closure of the relation R.) Then, R+ is a partial
+order on S.
+Example 6.15. Figure 6.29 shows a dag (P(S), R), where S = {1, 2 ,3}. The relation
+R+ is proper containment on the power set P(S).
+Fig. 6.29. Dag of proper containments.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (22 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+Test for Acyclicity
+Suppose we are given a directed graph G = (V, E), and we wish to determine whether
+G is acyclic, that is, whether G has no cycles. Depth-first search can be used to
+answer this question. If a back arc is encountered during a depth-first search of G,
+then clearly the graph has a cycle. Conversely, if a directed graph has a cycle, then a
+back arc will always be encountered in any depth-first search of the graph.
+To see this fact, suppose G is cyclic. If we do a depth-first search of G, there will
+be one vertex v having the lowest depth-first search number of any vertex on a cycle.
+Consider an arc u ® v on some cycle containing v. Since u is on the cycle, u must be
+a descendant of v in the depth-first spanning forest. Thus, u ® v cannot be a cross
+arc. Since the depth- first number of u is greater than the depth-first number of v, u ®
+v cannot be a tree arc or a forward arc. Thus, u ® v must be a back arc, as illustrated
+in Fig. 6.30.
+Fig. 6.30. Every cycle contains a back arc.
+Topological Sort
+A large project is often divided into a collection of smaller tasks, some of which have
+to be performed in certain specified orders so that we may complete the entire
+project. For example, a university curriculum may have courses that require other
+courses as prerequisites. Dags can be used to model such situations naturally. For
+example, we could have an arc from course C to course D if C is a prerequisite for D.
+Example 6.16. Figure 6.31 shows a dag giving the prerequisite structure on five
+courses. Course C3, for example, requires courses C1 and C2 as prerequisites.
+Fig. 6.31. Dag of prerequisites.
+http://www.ourstillwaters.org/stillwaters/csteaching/DataStructuresAndAlgorithms/mf1206.htm (23 of 31) [1.7.2001 19:12:41]
+Data Structures and Algorithms: CHAPTER 6: Directed Graphs
+Topological sort is a process of assigning a linear ordering to the vertices of a
+dag so that if there is an arc from vertex i to vertex j, then i appears before j in the
+linear ordering. For example, C1, C2, C3, C4, C5 is a topological sort of the dag in
+Fig. 6.31. Taking the courses in this sequence would satisfy the prerequisite structure
+given in Fig. 6.31.
+Topological sort can be easily accomplished by adding a print statement after
+line (4) to the depth-first search procedure in Fig. 6.24:
+procedure topsort ( v: vertex );
+{ print vertices accessible from v in reverse topological order }
+var
+w: vertex;
